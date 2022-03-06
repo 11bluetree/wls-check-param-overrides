@@ -1,0 +1,78 @@
+{
+    "?xml": {
+      "@version": "1.0",
+      "@encoding": "UTF-8"
+    },
+    "domain": {
+      "@xsi:schemaLocation": "http://xmlns.oracle.com/weblogic/security/wls http://xmlns.oracle.com/weblogic/security/wls/1.0/wls.xsd http://xmlns.oracle.com/weblogic/domain http://xmlns.oracle.com/weblogic/1.0/domain.xsd http://xmlns.oracle.com/weblogic/security http://xmlns.oracle.com/weblogic/1.0/security.xsd http://xmlns.oracle.com/weblogic/security/xacml http://xmlns.oracle.com/weblogic/security/xacml/1.0/xacml.xsd",
+      "@xmlns": "http://xmlns.oracle.com/weblogic/domain",
+      "@xmlns:sec": "http://xmlns.oracle.com/weblogic/security",
+      "@xmlns:wls": "http://xmlns.oracle.com/weblogic/security/wls",
+      "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "name": "base_domain",
+      "domain-version": "14.1.1.0.0",
+      "security-configuration": {
+        "@xmlns:xacml": "http://xmlns.oracle.com/weblogic/security/xacml",
+        "@xmlns:pas": "http://xmlns.oracle.com/weblogic/security/providers/passwordvalidator",
+        "name": "base_domain",
+        "realm": {
+          "sec:authentication-provider": [
+            {
+              "@xsi:type": "wls:default-authenticatorType",
+              "sec:name": "DefaultAuthenticator"
+            },
+            {
+              "@xsi:type": "wls:default-identity-asserterType",
+              "sec:name": "DefaultIdentityAsserter",
+              "sec:active-type": [
+                "AuthenticatedUser",
+                "weblogic-jwt-token"
+              ]
+            }
+          ],
+          "sec:role-mapper": {
+            "@xsi:type": "xacml:xacml-role-mapperType",
+            "sec:name": "XACMLRoleMapper"
+          },
+          "sec:authorizer": {
+            "@xsi:type": "xacml:xacml-authorizerType",
+            "sec:name": "XACMLAuthorizer"
+          },
+          "sec:adjudicator": {
+            "@xsi:type": "wls:default-adjudicatorType",
+            "sec:name": "DefaultAdjudicator"
+          },
+          "sec:credential-mapper": {
+            "@xsi:type": "wls:default-credential-mapperType",
+            "sec:name": "DefaultCredentialMapper"
+          },
+          "sec:cert-path-provider": {
+            "@xsi:type": "wls:web-logic-cert-path-providerType",
+            "sec:name": "WebLogicCertPathProvider"
+          },
+          "sec:cert-path-builder": "WebLogicCertPathProvider",
+          "sec:name": "myrealm",
+          "sec:password-validator": {
+            "@xsi:type": "pas:system-password-validatorType",
+            "sec:name": "SystemPasswordValidator",
+            "pas:min-password-length": "8",
+            "pas:min-numeric-or-special-characters": "1"
+          }
+        },
+        "default-realm": "myrealm",
+        "credential-encrypted": "{AES256}SM33gdKFSAA3b/eYUWkPaBlL1It7TxK/Cl7xJzDn9V0s93ugdEabR3hQIXkG0aU++3AAC8vS/k/42iQBSXPnQFcSxJdzxz6MTin9RDyOaVfqXdK+9lJm9Qf2MT+H5sWg",
+        "node-manager-username": "weblogic",
+        "node-manager-password-encrypted": "{AES256}xoZuONyEpUmZvAydfbE/8RjXoF51PhwVRBBBdUb3e9M="
+      },
+      "server": {
+        "name": "AdminServer",
+        "listen-address": null
+      },
+      "embedded-ldap": {
+        "name": "base_domain",
+        "credential-encrypted": "{AES256}Mgcl7G17ZBtP9Fp6z2KgbfYhMPAM7a/dX3aKc/Pe+XG3BPcGqbSRbrEgUdUbgZ3a"
+      },
+      "configuration-version": "14.1.1.0.0",
+      "admin-server-name": "AdminServer"
+    }
+  }
