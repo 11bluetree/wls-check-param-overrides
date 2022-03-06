@@ -4,19 +4,24 @@ package com.bluetree;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+    public static void main(String[] args) {
+        String kebab = "aoki-haru-hito-desu";
+        System.out.println(kebab);
 
-        String aoki = "aoki-haru";
+        System.out.println(kebabToCamel(kebab));
+    }
 
-        String[] haru =  aoki.split("-");
+    public static String kebabToCamel(String kebab) {
+        String[] kebabToArray = kebab.split("-");
 
-        aoki = aoki.replaceAll("-", "");
+        String camel = kebabToArray[0];
 
-        System.out.println(aoki);
-        System.out.println(haru);
+        for (int i = 1; i < kebabToArray.length; i++) {
+            kebabToArray[i] = kebabToArray[i].substring(0, 1).toUpperCase() + kebabToArray[i].substring(1);
+            camel = camel.concat(kebabToArray[i]);
+        }
+
+        return camel;
     }
 }
