@@ -6,7 +6,7 @@ package com.bluetree;
  */
 public class App {
     public static void main(String[] args) {
-        String kebab = "aoki-haru-hito-desu";
+        String kebab = "security-roll-allowed";
         System.out.println(kebab);
 
         System.out.println(kebabToCamel(kebab));
