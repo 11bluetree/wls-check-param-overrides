@@ -10,6 +10,12 @@ public class App {
         System.out.println(kebab);
 
         System.out.println(kebabToCamel(kebab));
+
+        sample();
+    }
+
+    public static void sample() {
+        System.out.println(123);
     }
 
     public static String kebabToCamel(String kebab) {
